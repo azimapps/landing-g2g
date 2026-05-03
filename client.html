@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mijoz loyihasi — G2G</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #F7F4F0;
+  --bg-soft: #F2EEE9;
+  --card: rgba(255, 252, 248, 0.8);
+  --card-solid: #FDFAF7;
+  --card-hover: rgba(240, 235, 228, 0.9);
+  --border: rgba(0, 0, 0, 0.07);
+  --border-mid: rgba(0, 0, 0, 0.11);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --text: #0f0f11;
+  --text-2: #0f0f11;
+  --text-3: rgba(15,15,17,0.5);
+  --grad: linear-gradient(120deg, #7c22e8 0%, #b91fd4 50%, #d4186a 100%);
+  --grad-text: linear-gradient(120deg, #7c22e8 0%, #b91fd4 50%, #d4186a 100%);
+  --grad-soft: linear-gradient(120deg, rgba(168,85,247,0.12) 0%, rgba(236,72,153,0.12) 100%);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(500px circle at 80% 5%, rgba(168,85,247,0.13), transparent 60%),
+    radial-gradient(400px circle at 10% 20%, rgba(236,72,153,0.10), transparent 60%);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ─────────────────────────────────────────────── */
+.nav-wrap {
+  position: sticky; top: 16px; z-index: 50;
+  padding: 0 24px; margin-top: 16px;
+}
+.nav {
+  max-width: 1440px; margin: 0 auto;
+  background: rgba(255,252,250,0.45);
+  backdrop-filter: blur(32px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.08);
+  border: 1px solid rgba(255,255,255,0.75);
+  border-bottom-color: rgba(255,255,255,0.4);
+  border-radius: 999px;
+  padding: 8px 8px 8px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.3);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo img { height: 32px; }
+.nav-links { display: flex; gap: 4px; align-items: center; }
+.nav-links a {
+  font-size: 16px; color: var(--text-2); font-weight: 500;
+  padding: 8px 18px; border-radius: 999px;
+  transition: color .2s, background .2s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.5); }
+.nav-cta {
+  background: var(--text); color: var(--bg);
+  padding: 12px 22px; border-radius: 999px;
+  font-size: 16px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: opacity .2s, transform .2s;
+}
+.nav-cta:hover { opacity: 0.9; transform: scale(1.02); }
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .nav { padding: 8px 8px 8px 16px; }
+}
+
+/* ─── LAYOUT ──────────────────────────────────────────── */
+main { position: relative; z-index: 1; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+/* ─── BACK LINK ────────────────────────────────────────── */
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px;
+  background: var(--card);
+  border: 1px solid var(--border-mid);
+  border-radius: 999px;
+  font-size: 13px; font-weight: 500;
+  color: var(--text-2);
+  margin-bottom: 36px;
+  transition: background .2s, gap .2s;
+}
+.back-link:hover { background: var(--card-hover); gap: 13px; }
+
+/* ─── HEADER ───────────────────────────────────────────── */
+.client-header { padding: 60px 0 32px; }
+
+.client-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+.client-logo-big {
+  width: 80px; height: 80px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--border-mid);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.client-logo-big img { width: 72%; height: 72%; object-fit: contain; }
+
+.client-top-info { flex: 1; }
+
+.client-pills {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 14px;
+}
+.pill {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-mid);
+  background: var(--card);
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; color: var(--text-2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pill.live {
+  border-color: rgba(34,197,94,0.35);
+  color: #4ade80;
+  background: rgba(34,197,94,0.08);
+}
+.pill.live::before { content: "●"; margin-right: 6px; }
+
+.client-h1 {
+  font-size: clamp(32px, 5vw, 68px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.client-h1 .grad {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.client-tagline {
+  font-size: clamp(15px, 1.3vw, 18px);
+  color: var(--text-3);
+  max-width: 680px;
+  line-height: 1.55;
+  margin-bottom: 28px;
+}
+
+/* ─── ACTIONS ──────────────────────────────────────────── */
+.client-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; font-family: inherit;
+  border: 1px solid transparent;
+  transition: all .2s; cursor: pointer;
+}
+.btn-grad {
+  background: var(--grad); color: white; border: none;
+  box-shadow: 0 6px 20px rgba(168,85,247,0.28);
+}
+.btn-grad:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(168,85,247,0.4); }
+.btn-ghost {
+  background: var(--card); color: var(--text);
+  border-color: var(--border-mid);
+}
+.btn-ghost:hover { background: var(--card-hover); border-color: var(--border-strong); }
+
+/* ─── FEATURES ROW ─────────────────────────────────────── */
+.client-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
+.feat-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  background: var(--card);
+  border: 1px solid var(--border-mid);
+  border-radius: 999px;
+  font-size: 13px; font-weight: 500;
+  transition: border-color .2s;
+}
+.feat-chip::before {
+  content: "";
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--grad);
+  flex-shrink: 0;
+}
+.feat-chip:hover { border-color: var(--border-strong); }
+
+/* ─── PREVIEW (browser iframe) ─────────────────────────── */
+.preview-wrap {
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--border-mid);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  margin-bottom: 56px;
+  background: #fff;
+}
+.preview-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px;
+  background: var(--card-solid);
+  border-bottom: 1px solid var(--border);
+}
+.preview-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.preview-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.preview-dots span:nth-child(1) { background: #ff5f57; }
+.preview-dots span:nth-child(2) { background: #febc2e; }
+.preview-dots span:nth-child(3) { background: #28c840; }
+.preview-url {
+  flex: 1; font-family: 'Geist Mono', monospace;
+  font-size: 12px; color: var(--text-3);
+  text-align: center;
+  background: rgba(0,0,0,0.04);
+  border-radius: 6px; padding: 4px 12px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.preview-ext {
+  font-size: 12px; font-weight: 600; color: #7c22e8;
+  flex-shrink: 0; transition: opacity .2s;
+}
+.preview-ext:hover { opacity: 0.7; }
+.preview-body { position: relative; height: 480px; background: #fafafa; overflow: hidden; }
+#clientIframe { width: 100%; height: 100%; border: none; display: block; opacity: 0; transition: opacity .4s; }
+.preview-fallback {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px; text-align: center;
+  background: var(--bg);
+}
+.pf-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(500px circle at 50% 40%, rgba(168,85,247,0.12), transparent 60%);
+  pointer-events: none;
+}
+.pf-domain {
+  font-family: 'Geist Mono', monospace;
+  font-size: 26px; font-weight: 600;
+  background: var(--grad-text);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.pf-msg { font-size: 14px; color: var(--text-3); }
+
+/* ─── GRID (sidebar + content) ─────────────────────────── */
+.client-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+@media (max-width: 860px) { .client-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+/* sidebar */
+.client-side {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 22px;
+  height: fit-content;
+  position: sticky; top: 100px;
+}
+.side-row {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.side-row:last-child { border-bottom: none; padding-bottom: 0; }
+.side-row:first-child { padding-top: 0; }
+.side-k {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-3);
+}
+.side-v { font-size: 14px; color: var(--text); }
+.tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.tech-list .pill { padding: 3px 10px; font-size: 10px; }
+
+/* content */
+.client-content h3 {
+  font-size: 22px; font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px; margin-top: 28px;
+}
+.client-content h3:first-child { margin-top: 0; }
+.client-content p {
+  color: var(--text-3);
+  font-size: 16px; line-height: 1.7;
+  margin-bottom: 12px; max-width: 680px;
+}
+.client-content p strong { color: var(--text); font-weight: 600; }
+
+/* ─── RESULTS ──────────────────────────────────────────── */
+.sec-label {
+  display: inline-flex;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text-3);
+  background: var(--card); border: 1px solid var(--border-mid);
+  padding: 4px 12px; border-radius: 999px;
+  margin-bottom: 20px;
+}
+.results-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-bottom: 64px;
+}
+@media (max-width: 640px) { .results-grid { grid-template-columns: 1fr; } }
+.result-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 26px;
+  position: relative; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.result-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.result-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(168,85,247,0.1), transparent 50%);
+  pointer-events: none;
+}
+.result-num {
+  font-size: 44px; font-weight: 700;
+  letter-spacing: -0.04em; line-height: 1;
+  background: var(--grad-text);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 10px;
+}
+.result-lbl {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-3);
+  margin-bottom: 6px;
+}
+.result-desc { font-size: 14px; color: var(--text-3); line-height: 1.5; }
+
+/* ─── NEXT CLIENT ──────────────────────────────────────── */
+.next-card {
+  background: var(--card); border: 1px solid var(--border-mid);
+  border-radius: 22px; padding: 32px 36px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 24px; transition: border-color .3s, transform .3s;
+  margin-bottom: 80px;
+}
+.next-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.next-tag {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-3);
+  margin-bottom: 8px;
+}
+.next-name {
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 700; letter-spacing: -0.03em;
+}
+.arrow-circle {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 18px; flex-shrink: 0;
+}
+@media (max-width: 600px) { .next-card { flex-direction: column; align-items: flex-start; } }
+
+/* ─── FOOTER ───────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 0 32px;
+  position: relative; z-index: 1;
+}
+.foot-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px; margin-bottom: 40px;
+}
+@media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+.foot-brand img { height: 28px; margin-bottom: 12px; display: block; }
+.foot-brand p { font-size: 13px; color: var(--text-3); line-height: 1.6; max-width: 240px; }
+.foot-col h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+.foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.foot-col a { font-size: 13px; color: var(--text-3); transition: color .2s; }
+.foot-col a:hover { color: var(--text); }
+.foot-bot {
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--border); padding-top: 20px;
+  font-size: 12px; color: var(--text-3);
+}
+.legal { display: flex; gap: 20px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="G2G" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html#services">Xizmatlar</a>
+      <a href="index.html#projects">Loyihalar</a>
+      <a href="index.html#clients">Mijozlar</a>
+    </div>
+    <a href="index.html#contact" class="nav-cta">Aloqa →</a>
+  </nav>
+</div>
+
+<main>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <section class="client-header">
+    <a href="index.html#clients" class="back-link">← Barcha mijozlar</a>
+
+    <div class="client-top">
+      <div class="client-logo-big" id="clientLogoWrap">
+        <img id="clientLogo" src="" alt="" />
+      </div>
+      <div class="client-top-info">
+        <div class="client-pills" id="clientPills">
+          <span class="pill">2024</span>
+        </div>
+        <h1 class="client-h1" id="clientH1">
+          <span class="grad">Mijoz</span> loyihasi
+        </h1>
+      </div>
+    </div>
+
+    <p class="client-tagline" id="clientTagline">
+      Loyihaning tavsifi yuklanmoqda...
+    </p>
+
+    <div class="client-actions">
+      <a href="#" class="btn btn-grad" id="clientSiteBtn" target="_blank" rel="noopener">
+        Saytga o'tish ↗
+      </a>
+    </div>
+
+    <div class="client-features" id="clientFeatures"></div>
+  </section>
+
+  <!-- PREVIEW -->
+  <div class="preview-wrap" id="previewWrap">
+    <div class="preview-bar">
+      <div class="preview-dots"><span></span><span></span><span></span></div>
+      <div class="preview-url" id="previewUrl">—</div>
+      <a class="preview-ext" id="previewExt" href="#" target="_blank" rel="noopener">↗ Ochish</a>
+    </div>
+    <div class="preview-body">
+      <iframe id="clientIframe" src="" loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-forms"
+        scrolling="no" title="Loyiha ko'rinishi"></iframe>
+      <div class="preview-fallback" id="previewFallback">
+        <div class="pf-glow"></div>
+        <div class="pf-domain" id="pfDomain">—</div>
+        <div class="pf-msg">Live saytni ko'rish uchun</div>
+        <a class="btn btn-grad" id="pfBtn" href="#" target="_blank" rel="noopener">Saytga o'tish ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="client-grid">
+    <aside class="client-side">
+      <div class="side-row">
+        <span class="side-k">Mijoz</span>
+        <span class="side-v" id="sMijoz">—</span>
+      </div>
+      <div class="side-row">
+        <span class="side-k">Soha</span>
+        <span class="side-v" id="sSoha">—</span>
+      </div>
+      <div class="side-row">
+        <span class="side-k">Yil</span>
+        <span class="side-v" id="sYil">—</span>
+      </div>
+      <div class="side-row">
+        <span class="side-k">Xizmat turi</span>
+        <span class="side-v" id="sXizmat">—</span>
+      </div>
+      <div class="side-row">
+        <span class="side-k">Texnologiyalar</span>
+        <div class="tech-list" id="sTech"></div>
+      </div>
+      <div class="side-row">
+        <span class="side-k">Live</span>
+        <span class="side-v">
+          <a href="#" id="sLive" target="_blank" rel="noopener"
+            style="background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;">—</a>
+        </span>
+      </div>
+    </aside>
+
+    <div class="client-content">
+      <h3>Muammo</h3>
+      <p id="cProblem">—</p>
+      <h3>Yondashuv</h3>
+      <p id="cApproach">—</p>
+      <h3>Natija</h3>
+      <p id="cResult">—</p>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="sec-label">Natijalar</div>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-num" id="r0n">—</div>
+      <div class="result-lbl" id="r0l">—</div>
+      <div class="result-desc" id="r0d">—</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num" id="r1n">—</div>
+      <div class="result-lbl" id="r1l">—</div>
+      <div class="result-desc" id="r1d">—</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num" id="r2n">—</div>
+      <div class="result-lbl" id="r2l">—</div>
+      <div class="result-desc" id="r2d">—</div>
+    </div>
+  </div>
+
+  <!-- NEXT -->
+  <a href="#" class="next-card" id="nextCard">
+    <div>
+      <div class="next-tag">Keyingi mijoz</div>
+      <div class="next-name" id="nextName">—
+        <span style="background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;"> →</span>
+      </div>
+    </div>
+    <span class="arrow-circle">↗</span>
+  </a>
+
+</div><!-- /wrap -->
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="logo.png" alt="G2G" />
+        <p>G2G — Good To Go. Tashkent. Web, mobil va brending.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="index.html#services">Xizmatlar</a></li>
+          <li><a href="index.html#contact">Aloqa</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Ish</h4>
+        <ul>
+          <li><a href="index.html#projects">Startaplar</a></li>
+          <li><a href="index.html#clients">Mijozlar</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Aloqa</h4>
+        <ul>
+          <li><a href="https://t.me/g2g_uz">Telegram</a></li>
+          <li><a href="mailto:hello@g2g.uz">hello@g2g.uz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 G2G — Good To Go</span>
+      <div class="legal"><a href="#">Maxfiylik</a><a href="#">Shartlar</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── CLIENT DATA ──────────────────────────────────────────────────────────────
+const CLIENTS = {
+  avtoshablon: {
+    name: 'avtoshablon.uz',
+    tagline: 'Haydovchilik imtihoni uchun interaktiv test shablonlari platformasi — to\'liq online.',
+    industry: 'Ta\'lim · Transport',
+    year: '2024',
+    service: 'Veb-sayt ishlab chiqish',
+    domain: 'avtoshablon.uz',
+    tech: ['Next.js', 'PostgreSQL', 'Tailwind'],
+    tags: ['Veb-sayt', '2024'],
+    features: ['Interaktiv testlar', 'Kategoriya bo\'yicha', 'Tez yuklanish', 'Mobil moslashgan'],
+    problem: 'Haydovchilik imtihoniga tayyorlanayotganlar uchun qulay, zamonaviy online test platformasi mavjud emas edi. Mavjud resurslar eskirgan va foydalanish qiyin edi.',
+    approach: 'Foydalanuvchi uchun qulay interfeys yaratildi. Testlar kategoriyalarga bo\'lindi, natijalar darhol ko\'rsatiladi. Sayt tezligi va mobil moslashuviga alohida e\'tibor berildi.',
+    result: 'Foydalanuvchilar haydovchilik qoidalarini qulay va samarali o\'rganmoqda. Sayt kunlik yuzlab foydalanuvchiga xizmat ko\'rsatmoqda.',
+    results: [
+      { num: '500+', lbl: 'Foydalanuvchi/kun', desc: 'Kunlik aktiv foydalanuvchilar' },
+      { num: '98', lbl: 'Lighthouse', desc: 'Performance va SEO skori' },
+      { num: '2×', lbl: 'O\'tish darajasi', desc: 'Imtihon muvaffaqiyati oshdi' }
+    ],
+    next: 'avtoshablonlar',
+    nextName: 'avtoshablonlar.uz'
+  },
+  avtoshablonlar: {
+    name: 'avtoshablonlar.uz',
+    tagline: 'To\'liq haydovchilik shablonlari to\'plami va e-commerce platforma — barchasi bir joyda.',
+    industry: 'E-commerce · Transport',
+    year: '2024',
+    service: 'Veb-sayt + E-commerce',
+    domain: 'avtoshablonlar.uz',
+    tech: ['React', 'Node.js', 'MongoDB'],
+    tags: ['Veb-sayt', 'E-commerce', '2024'],
+    features: ['Shablon katalogi', 'Online to\'lov', 'Yuklab olish tizimi', 'Admin panel'],
+    problem: 'Haydovchilik hujjatlari shablonlarini topish va sotib olish uchun ishonchli platforma yo\'q edi. Foydalanuvchilar tarqoq resurslarda qidirardi.',
+    approach: 'Barcha shablon turlari bitta katalogga jamlandi. Online to\'lov va avtomatik yuklab olish tizimi joriy etildi. Admin panel orqali tovar qo\'shish va boshqarish soddalashtirildi.',
+    result: 'Mijozlar kerakli shablonlarni tez topib, to\'lov qilib yuklab olmoqda. Platforma passiv daromad manbaiga aylandi.',
+    results: [
+      { num: '200+', lbl: 'Shablon', desc: 'Katalogdagi tovarlar soni' },
+      { num: '3 daq', lbl: 'O\'rtacha vaqt', desc: 'Topish va sotib olish vaqti' },
+      { num: '+60%', lbl: 'Konversiya', desc: 'Tashrif buyuruvchilardan xaridor' }
+    ],
+    next: 'falaq',
+    nextName: 'Falaq Nashr'
+  },
+  falaq: {
+    name: 'Falaq Nashr',
+    tagline: 'O\'zbekistondagi nashriyot uyining zamonaviy korporativ veb-sayti va brending tizimi.',
+    industry: 'Nashriyot · Media',
+    year: '2023',
+    service: 'Veb-sayt + Brending',
+    domain: 'falaqnashr.uz',
+    tech: ['Next.js', 'Tailwind', 'Framer Motion'],
+    tags: ['Veb-sayt', 'Brending', '2023'],
+    features: ['Kitob katalogi', 'Muallif sahifasi', 'Blog', 'Korporativ identitet'],
+    problem: 'Nashriyot zamonaviy raqamli huzur yo\'q edi. Potentsial mualliflar va o\'quvchilar kompaniya haqida ma\'lumot topa olmasdi.',
+    approach: 'Kompaniya tarixini va qadriyatlarini aks ettiruvchi dizayn yaratildi. Kitoblar katalogi, muallif profillar va blog bo\'limlari qo\'shildi. Brend identifikatsiyasi yangilandi.',
+    result: 'Kompaniya raqamli olamda kuchli huzur o\'rnatdi. Yangi mualliflar bilan hamkorlik soni oshdi.',
+    results: [
+      { num: '150+', lbl: 'Kitob', desc: 'Onlayn katalogda' },
+      { num: '3×', lbl: 'So\'rovlar', desc: 'Muallif so\'rovlari oshdi' },
+      { num: '100%', lbl: 'Brend yangilanish', desc: 'To\'liq identitet yangilandi' }
+    ],
+    next: 'tibbiyot',
+    nextName: 'Tibbiyot Litseyi'
+  },
+  tibbiyot: {
+    name: 'Tibbiyot Litseyi',
+    tagline: 'Tibbiyot litseyi uchun rasmiy ta\'lim platformasi — qabul, o\'quv jarayon va yangiliklar.',
+    industry: 'Ta\'lim · Tibbiyot',
+    year: '2024',
+    service: 'Veb-sayt ishlab chiqish',
+    domain: 'tibbiyotlitseyi.uz',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL'],
+    tags: ['Veb-sayt', 'Ta\'lim', '2024'],
+    features: ['Qabul tizimi', 'O\'quv dasturi', 'Yangiliklar', 'Aloqa formasi'],
+    problem: 'Tibbiyot litseyi veb-saytsiz yoki eskirgan sayt bilan ishlardi. Qabul jarayoni ko\'p vaqt va resurs sarflar edi.',
+    approach: 'Rasmiy va zamonaviy dizayn yaratildi. Qabul uchun online ariza tizimi joriy etildi. O\'quv dasturi va jadval onlayn ko\'rsatiladi.',
+    result: 'Qabul jarayoni raqamlashtirildi, abituriyentlar arizalarini online topshirmoqda. Ma\'muriyat ishi osonlashdi.',
+    results: [
+      { num: '2×', lbl: 'Ariza soni', desc: 'Online qabul orqali' },
+      { num: '-70%', lbl: 'Ma\'muriyat yuki', desc: 'Qog\'oz ishlari kamaydi' },
+      { num: '24/7', lbl: 'Ma\'lumot', desc: 'Istalgan vaqt kirish' }
+    ],
+    next: 'pibusecreats',
+    nextName: 'Pibusecreats'
+  },
+  pibusecreats: {
+    name: 'Pibusecreats',
+    tagline: 'Go\'zallik salon uchun to\'liq brend identifikatsiyasi, veb-sayt va ijtimoiy media dizayni.',
+    industry: 'Beauty · Lifestyle',
+    year: '2024',
+    service: 'Brending + Veb',
+    domain: 'pibusecreats.uz',
+    tech: ['Figma', 'WordPress', 'Adobe CC'],
+    tags: ['Brending', 'Veb-sayt', '2024'],
+    features: ['Logo dizayn', 'Brand guideline', 'Veb-sayt', 'SMM shablonlar'],
+    problem: 'Beauty salon mijozlarni jalb qila olmayotgan edi. Brendning birlashgan vizual identiteti yo\'q, ijtimoiy media sahifalar tartibsiz ko\'rinardi.',
+    approach: 'Brendning asosiy qadriyatlari va maqsadli auditoriyasi aniqlanib, unga mos logo, rang palitrasi va tipografiya tanlandi. Barcha kanallar uchun yagona vizual tizim yaratildi.',
+    result: 'Salon yangi mijozlar uchun jozibali, professional ko\'rinishga ega bo\'ldi. Ijtimoiy mediada faollik va kuzatuvchilar soni oshdi.',
+    results: [
+      { num: '+85%', lbl: 'Sotsial faollik', desc: 'Instagram engagement oshdi' },
+      { num: '3×', lbl: 'Yangi mijozlar', desc: 'Birinchi oyda' },
+      { num: '5★', lbl: 'Baho', desc: 'Mijoz mamnuniyati' }
+    ],
+    next: 'aica',
+    nextName: 'AICA'
+  },
+  aica: {
+    name: 'AICA',
+    tagline: 'Sun\'iy intellekt va innovatsiya markazi uchun raqamli platforma va korporativ identitet.',
+    industry: 'AI · Innovatsiya',
+    year: '2024',
+    service: 'Veb + Mobile + Brend',
+    domain: 'aica.uz',
+    tech: ['Next.js', 'React Native', 'Tailwind', 'Figma'],
+    tags: ['Veb', 'Mobile', 'Brending', '2024'],
+    features: ['Korporativ sayt', 'Mobil ilova', 'Brend tizimi', 'AI bo\'lim'],
+    problem: 'Innovatsiya markazi zamonaviy raqamli huzur yo\'q edi. Startaplar va tadqiqotchilar markaz xizmatlari haqida ma\'lumot topa olmasdi.',
+    approach: 'Futuristik va texnologik dizayn kontseptsiyasi ishlab chiqildi. Korporativ sayt, mobil ilova va barcha marketing materiallari birlashtirildi.',
+    result: 'Markaz O\'zbekistonda AI yo\'nalishidagi eng ko\'zga ko\'ringan tashkilotlardan biriga aylandi.',
+    results: [
+      { num: '50+', lbl: 'Startap', desc: 'Markazga qo\'shildi' },
+      { num: '3', lbl: 'Platform', desc: 'Veb, iOS, Android' },
+      { num: '∞', lbl: 'Imkoniyat', desc: 'Innovatsiya uchun maydon' }
+    ],
+    next: 'rentoni',
+    nextName: 'Rentoni'
+  },
+  rentoni: {
+    name: 'Rentoni',
+    tagline: 'Mulk va transport ijarasi uchun onlayn bron qilish va boshqaruv platformasi.',
+    industry: 'Ijara · PropTech',
+    year: '2024',
+    service: 'Veb-sayt + Backend',
+    domain: 'rentoni.uz',
+    tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+    tags: ['Veb-sayt', 'SaaS', '2024'],
+    features: ['Onlayn bron', 'To\'lov tizimi', 'Dashboard', 'Xarita integratsiya'],
+    problem: 'Mulk va transport ijarasi uchun qulay, ishonchli platforma yo\'q edi. Ijara jarayoni qo\'l bilan va vaqt talab qilar edi.',
+    approach: 'Xaridor va ijaraberuv uchun alohida dashboard. Xarita orqali qidirish, real vaqt mavjudligi va online to\'lov tizimi joriy etildi.',
+    result: 'Ijara jarayoni to\'liq raqamlashtirildi. Foydalanuvchilar uydan chiqmay bron qilmoqda.',
+    results: [
+      { num: '300+', lbl: 'Ob\'ekt', desc: 'Platformadagi ijaralar' },
+      { num: '-80%', lbl: 'Bron vaqti', desc: 'Qo\'ldan onlaynga o\'tish' },
+      { num: '4.7★', lbl: 'Foydalanuvchi baho', desc: 'O\'rtacha reyting' }
+    ],
+    next: 'stadion24',
+    nextName: 'Stadion24'
+  },
+  stadion24: {
+    name: 'Stadion24',
+    tagline: 'Sport majmuasi va maydonlarni onlayn band qilish hamda boshqarish tizimi.',
+    industry: 'Sport · SaaS',
+    year: '2024',
+    service: 'Veb + Mobile App',
+    domain: 'stadion24.uz',
+    tech: ['React', 'React Native', 'Firebase', 'Node.js'],
+    tags: ['Veb', 'Mobile', 'Sport', '2024'],
+    features: ['Onlayn bron', 'Real-vaqt takvim', 'To\'lov', 'Admin panel'],
+    problem: 'Sport majmualar phone orqali band qilishni boshqarishda qiynalardi. Vaqt to\'qnashuvlari va yo\'qolgan bronlar katta muammo edi.',
+    approach: 'Real-vaqt takvim tizimi yaratildi. Foydalanuvchi maydonni tanlab, vaqt belgilab, to\'lov qiladi — hammasi bir necha daqiqada. Admin real vaqt boshqaradi.',
+    result: 'Maydon to\'ldiruvchanlik 40% oshdi. Ma\'muriyat vaqti va xatoliklar keskin kamaydi.',
+    results: [
+      { num: '+40%', lbl: 'To\'ldiruvchanlik', desc: 'Maydon band bo\'lish darajasi' },
+      { num: '0', lbl: 'To\'qnashuv', desc: 'Vaqt to\'qnashuvlari' },
+      { num: '2×', lbl: 'Daromad', desc: 'Birinchi oy ichida' }
+    ],
+    next: 'polimaks',
+    nextName: 'Polimaks'
+  },
+  polimaks: {
+    name: 'Polimaks',
+    tagline: 'Polimer va qurilish mahsulotlari kompaniyasining korporativ showroom veb-sayti.',
+    industry: 'Qurilish · B2B',
+    year: '2023',
+    service: 'Veb-sayt ishlab chiqish',
+    domain: 'polimaks.uz',
+    tech: ['Next.js', 'Tailwind', 'Sanity CMS'],
+    tags: ['Veb-sayt', 'B2B', '2023'],
+    features: ['Mahsulot katalogi', 'CMS', 'Narx so\'rov', 'Ko\'p til'],
+    problem: 'Qurilish kompaniyasi mahsulotlarini potentsial xaridor va sheriklar uchun taqdim etishda qiynalardi. Katalog eskirgan, narxlar yangilanmay qolar edi.',
+    approach: 'CMS asosidagi dinamik katalog yaratildi. Kompaniya o\'zi mahsulot va narxlarni osongina yangilaydi. Ko\'p tillik qo\'llab-quvvatlash joriy etildi.',
+    result: 'Kompaniya B2B sohasida raqamli huzurini mustahkamladi. Yangi sheriklar va xaridorlar soni oshdi.',
+    results: [
+      { num: '500+', lbl: 'Mahsulot', desc: 'Onlayn katalogda' },
+      { num: '3 til', lbl: 'Tillar', desc: 'O\'zbek, Rus, Ingliz' },
+      { num: '+45%', lbl: 'Murojaat', desc: 'Online so\'rovlar oshdi' }
+    ],
+    next: 'homemed',
+    nextName: 'Homemed'
+  },
+  homemed: {
+    name: 'Homemed',
+    tagline: 'Uyga tibbiy xizmat va dori yetkazib berish ilovasi — tez, ishonchli, qulay.',
+    industry: 'Tibbiyot · HealthTech',
+    year: '2024',
+    service: 'Mobile App (iOS + Android)',
+    domain: 'homemed.uz',
+    tech: ['React Native', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    tags: ['Mobile App', 'Tibbiyot', '2024'],
+    features: ['Shifokor chaqirish', 'Dori buyurtma', 'Tracking', 'Tibbiy tarix'],
+    problem: 'Bemorlar, ayniqsa harakatlanish qiyinlari, tibbiy xizmat va dori olish uchun uzoqqa borishga majbur edi. Tibbiy xizmat ko\'rsatuvchilar ham yangi mijozlarni qiyin topardi.',
+    approach: 'Platforma ikki tomon uchun: bemor va tibbiy xizmat ko\'rsatuvchi. GPS tracking, real-vaqt buyurtma holati va tibbiy tarix tizimi yaratildi.',
+    result: 'Uyda tibbiy xizmat olish imkoni yaratildi. Shifokorlar va bemorlar o\'rtasida samarali ulanish ta\'minlandi.',
+    results: [
+      { num: '1K+', lbl: 'Foydalanuvchi', desc: 'Birinchi 2 oyda' },
+      { num: '30 daq', lbl: 'O\'rtacha vaqt', desc: 'Shifokor yetib kelishi' },
+      { num: '4.8★', lbl: 'App Store', desc: 'Foydalanuvchi bahosi' }
+    ],
+    next: 'pdpstudent',
+    nextName: 'PDP Student'
+  },
+  pdpstudent: {
+    name: 'PDP Student',
+    tagline: 'PDP Academy talabalar uchun o\'quv jarayoni, jadval va topshiriqlarni boshqarish ilovasi.',
+    industry: 'Ta\'lim · EdTech',
+    year: '2024',
+    service: 'Mobile App',
+    domain: 'pdp.uz',
+    tech: ['React Native', 'Redux', 'REST API'],
+    tags: ['Mobile App', 'Ta\'lim', '2024'],
+    features: ['Jadval', 'Topshiriqlar', 'Dars yozuvlari', 'O\'qituvchi aloqasi'],
+    problem: 'PDP Academy talabalari jadval, topshiriqlar va ma\'lumotlarni turli kanallardan (Telegram, Excel, og\'zaki) olardi. Bu tartibsizlikka olib kelardi.',
+    approach: 'Barcha o\'quv jarayoni ma\'lumotlari bitta ilovaga jamlandi. Real-vaqt bildirishnomalar, dars yozuvlari va o\'qituvchi bilan aloqa joriy etildi.',
+    result: 'Talabalar o\'quv jarayonini tartibli boshqarmoqda. O\'tkazib yuborilgan darslar va topshiriqlar kamaydi.',
+    results: [
+      { num: '5K+', lbl: 'Talaba', desc: 'Aktiv foydalanuvchilar' },
+      { num: '-50%', lbl: 'Savol', desc: 'Takroriy savollar kamaydi' },
+      { num: '4.9★', lbl: 'Reyting', desc: 'Talabalar bahosi' }
+    ],
+    next: 'pdphelp',
+    nextName: 'PDP Help Center'
+  },
+  pdphelp: {
+    name: 'PDP Help Center',
+    tagline: 'PDP Academy talabalar va hodimlar uchun markazlashgan yordam va support tizimi.',
+    industry: 'Ta\'lim · Support',
+    year: '2024',
+    service: 'Veb-sayt + Tizim',
+    domain: 'help.pdp.uz',
+    tech: ['Next.js', 'TypeScript', 'Supabase'],
+    tags: ['Veb-sayt', 'SaaS', '2024'],
+    features: ['Ticket tizimi', 'FAQ baza', 'Live chat', 'Admin dashboard'],
+    problem: 'PDP Academy talabalar savollar va muammolarini Telegram, email va shaxsan kelib hal qilar edi. Support jarayoni tartibsiz va sekin edi.',
+    approach: 'Markazlashgan ticket tizimi va bilim bazasi yaratildi. Talabalar avval o\'z-o\'ziga yordam topishga harakat qiladi, keyin support xatoga murojaat qiladi.',
+    result: 'Support yuki 60% kamaydi, chunki FAQ orqali ko\'p savollar o\'z-o\'zidan yechiladi. Javob vaqti sezilarli qisqardi.',
+    results: [
+      { num: '-60%', lbl: 'Support yuki', desc: 'FAQ samarasi' },
+      { num: '2 soat', lbl: 'Javob vaqti', desc: 'O\'rtacha ticket yopilish' },
+      { num: '98%', lbl: 'Hal etildi', desc: 'Muvaffaqiyatli yopilgan' }
+    ],
+    next: 'iut',
+    nextName: 'IUT Mobile'
+  },
+  iut: {
+    name: 'IUT Mobile',
+    tagline: 'Westminster universiteti talabalar uchun rasmiy mobil ilova — jadval, xabar va servislar.',
+    industry: 'Ta\'lim · Universitet',
+    year: '2025',
+    service: 'Mobile App (iOS + Android)',
+    domain: 'iut.uz',
+    tech: ['React Native', 'TypeScript', 'REST API', 'Firebase'],
+    tags: ['Mobile App', 'Universitet', '2025'],
+    features: ['Akademik jadval', 'Bildirishnomalar', 'Kutubxona', 'Kampus xarita'],
+    problem: 'Westminster universiteti talabalar ma\'lumotlar, jadval va xabarlarni turli manbalardan olardi. Yagona rasmiy mobil platforma mavjud emas edi.',
+    approach: 'Universitetning rasmiy API bilan integratsiya qilindi. Jadval, baholar, xabarlar va kampus xarita bitta ilovada birlashtirildi. iOS va Android uchun birgalikda ishlab chiqildi.',
+    result: 'Universitet talabalariga zamonaviy raqamli tajriba taqdim etildi. Ilova kampus hayotining ajralmas qismiga aylandi.',
+    results: [
+      { num: '7K+', lbl: 'Talaba', desc: 'Aktiv foydalanuvchilar' },
+      { num: '2 OS', lbl: 'Platformalar', desc: 'iOS va Android' },
+      { num: '4.8★', lbl: 'Reyting', desc: 'App Store bahosi' }
+    ],
+    next: 'avtoshablon',
+    nextName: 'avtoshablon.uz'
+  }
+};
+
+// ─── POPULATE PAGE ────────────────────────────────────────────────────────────
+(function() {
+  const id = new URLSearchParams(window.location.search).get('c');
+  const c = CLIENTS[id];
+  if (!c) {
+    document.getElementById('clientH1').textContent = 'Mijoz topilmadi';
+    return;
+  }
+
+  document.title = c.name + ' — G2G';
+
+  // H1
+  document.getElementById('clientH1').innerHTML = '<span class="grad">' + c.name + '</span>';
+
+  // Tagline
+  document.getElementById('clientTagline').textContent = c.tagline;
+
+  // Pills
+  var pills = document.getElementById('clientPills');
+  var allTags = [c.year, c.industry.split(' · ')[0]].concat(c.tags || []);
+  pills.innerHTML = [...new Set(allTags)].map(function(t) {
+    return '<span class="pill">' + t + '</span>';
+  }).join('');
+
+  // Features
+  var feat = document.getElementById('clientFeatures');
+  if (c.features) {
+    feat.innerHTML = c.features.map(function(f) {
+      return '<span class="feat-chip">' + f + '</span>';
+    }).join('');
+  }
+
+  // Site button + preview
+  if (c.domain) {
+    var url = 'https://' + c.domain;
+    document.getElementById('clientSiteBtn').href = url;
+    document.getElementById('previewUrl').textContent = c.domain;
+    document.getElementById('previewExt').href = url;
+    document.getElementById('pfDomain').textContent = c.domain;
+    document.getElementById('pfBtn').href = url;
+
+    // Iframe
+    var iframe = document.getElementById('clientIframe');
+    iframe.src = url;
+    iframe.onload = function() {
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (doc && doc.body && doc.body.innerHTML !== '') {
+          document.getElementById('previewFallback').style.display = 'none';
+          iframe.style.opacity = '1';
+        }
+      } catch(e) {}
+    };
+    setTimeout(function() {
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc || doc.readyState === 'loading' || !doc.body || !doc.body.innerHTML) throw new Error('blocked');
+        iframe.style.opacity = '1';
+        document.getElementById('previewFallback').style.display = 'none';
+      } catch(e) {
+        document.getElementById('previewFallback').style.display = 'flex';
+        iframe.style.display = 'none';
+      }
+    }, 4000);
+  }
+
+  // Sidebar
+  document.getElementById('sMijoz').textContent = c.name;
+  document.getElementById('sSoha').textContent = c.industry;
+  document.getElementById('sYil').textContent = c.year;
+  document.getElementById('sXizmat').textContent = c.service;
+  var techList = document.getElementById('sTech');
+  techList.innerHTML = (c.tech || []).map(function(t) {
+    return '<span class="pill">' + t + '</span>';
+  }).join('');
+  var liveEl = document.getElementById('sLive');
+  if (c.domain) {
+    liveEl.href = 'https://' + c.domain;
+    liveEl.textContent = c.domain + ' ↗';
+  }
+
+  // Content
+  document.getElementById('cProblem').textContent = c.problem;
+  document.getElementById('cApproach').textContent = c.approach;
+  document.getElementById('cResult').textContent = c.result;
+
+  // Results cards
+  if (c.results) {
+    c.results.forEach(function(r, i) {
+      var n = document.getElementById('r' + i + 'n');
+      var l = document.getElementById('r' + i + 'l');
+      var d = document.getElementById('r' + i + 'd');
+      if (n) n.textContent = r.num;
+      if (l) l.textContent = r.lbl;
+      if (d) d.textContent = r.desc;
+    });
+  }
+
+  // Next client
+  if (c.next) {
+    document.getElementById('nextCard').href = 'client.html?c=' + c.next;
+    document.getElementById('nextName').innerHTML = c.nextName +
+      '<span style="background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;"> →</span>';
+  }
+
+  // Logo — try to find matching image in index.html logos
+  // We use a canvas-less approach: look for the alt text match in the window
+  // (Logo images are base64 embedded in index.html, not in this file)
+  // Show initials fallback styled
+  var logoWrap = document.getElementById('clientLogoWrap');
+  var logoImg = document.getElementById('clientLogo');
+  // Attempt to load — will fallback to initials if 404
+  logoImg.style.display = 'none';
+  logoWrap.style.background = 'linear-gradient(135deg, rgba(124,34,232,0.12), rgba(212,24,106,0.12))';
+  logoWrap.style.border = '1px solid rgba(124,34,232,0.2)';
+  var initials = c.name.replace(/[^A-Za-z0-9]/g, '').slice(0,2).toUpperCase();
+  var span = document.createElement('span');
+  span.textContent = initials;
+  span.style.cssText = 'font-size:22px;font-weight:800;letter-spacing:-0.04em;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;';
+  logoWrap.appendChild(span);
+})();
+</script>
+
+</body>
+</html>

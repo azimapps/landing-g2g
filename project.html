@@ -11,26 +11,26 @@
 <style>
 
 :root {
-  --bg: #09090b;
-  --bg-soft: #0d0d10;
-  --card: rgba(24, 24, 27, 0.5);
-  --card-solid: #131316;
-  --card-hover: rgba(39, 39, 42, 0.7);
-  --border: rgba(255, 255, 255, 0.06);
-  --border-mid: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --text: #fafafa;
-  --text-2: #a1a1aa;
-  --text-3: #71717a;
-  --text-4: #52525b;
+  --bg: #F7F4F0;
+  --bg-soft: #F2EEE9;
+  --card: rgba(255, 252, 248, 0.8);
+  --card-solid: #FDFAF7;
+  --card-hover: rgba(240, 235, 228, 0.9);
+  --border: rgba(0, 0, 0, 0.07);
+  --border-mid: rgba(0, 0, 0, 0.11);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --text: #0f0f11;
+  --text-2: #0f0f11;
+  --text-3: #0f0f11;
+  --text-4: #0f0f11;
   --accent-violet: #a855f7;
   --accent-fuchsia: #d946ef;
   --accent-pink: #ec4899;
   --accent-indigo: #818cf8;
   --accent-amber: #fbbf24;
   --accent-emerald: #34d399;
-  --grad: linear-gradient(120deg, #a855f7 0%, #d946ef 50%, #ec4899 100%);
-  --grad-text: linear-gradient(120deg, #c4b5fd 0%, #f0abfc 50%, #fda4af 100%);
+  --grad: linear-gradient(120deg, #7c22e8 0%, #b91fd4 50%, #d4186a 100%);
+  --grad-text: linear-gradient(120deg, #7c22e8 0%, #b91fd4 50%, #d4186a 100%);
   --grad-soft: linear-gradient(120deg, rgba(168,85,247,0.18) 0%, rgba(236,72,153,0.18) 100%);
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
   --shadow-card: 0 8px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
@@ -92,22 +92,27 @@ button { font-family: inherit; cursor: pointer; }
   margin-top: 16px;
 }
 .nav {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  background: rgba(13, 13, 16, 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border);
+  background: rgba(255, 252, 250, 0.45);
+  backdrop-filter: blur(32px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-bottom-color: rgba(255,255,255,0.4);
   border-radius: 999px;
   padding: 8px 8px 8px 20px;
   display: flex;
   align-items: center;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.08),
+    0 2px 8px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    inset 0 -1px 0 rgba(255,255,255,0.3);
   justify-content: space-between;
   gap: 24px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; }
-.nav-logo img { height: 24px; }
+.nav-logo img { height: 32px; }
 .nav-logo .live-dot {
   width: 8px; height: 8px; border-radius: 50%;
   background: #22c55e; box-shadow: 0 0 10px #22c55e;
@@ -122,20 +127,20 @@ button { font-family: inherit; cursor: pointer; }
   display: flex; gap: 4px; align-items: center;
 }
 .nav-links a {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text-2);
   font-weight: 500;
-  padding: 8px 14px;
+  padding: 8px 18px;
   border-radius: 999px;
   transition: color .2s, background .2s;
 }
-.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.5); }
 .nav-cta {
   background: var(--text);
   color: var(--bg);
-  padding: 10px 18px;
+  padding: 12px 22px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
@@ -150,7 +155,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ============ MAIN ============ */
 main { position: relative; z-index: 1; }
-.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
+.wrap { max-width: 1440px; margin: 0 auto; padding: 0 48px; position: relative; }
 
 /* ============ HERO ============ */
 .hero {
@@ -1082,6 +1087,160 @@ footer {
 }
 .result-desc { font-size: 14px; color: var(--text-2); line-height: 1.5; }
 
+/* ============ FEATURES ROW ============ */
+.proj-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.proj-feat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: var(--card);
+  border: 1px solid var(--border-mid);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color .2s, background .2s;
+}
+.proj-feat-chip::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--grad);
+  flex-shrink: 0;
+}
+.proj-feat-chip:hover {
+  border-color: var(--border-strong);
+  background: var(--card-hover);
+}
+
+/* ============ PROJ PREVIEW (iframe) ============ */
+.proj-preview-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-mid);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  margin-bottom: 60px;
+  background: #fff;
+}
+.proj-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--card-solid);
+  border-bottom: 1px solid var(--border);
+}
+.preview-dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.preview-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border-mid);
+}
+.preview-dots span:nth-child(1) { background: #ff5f57; }
+.preview-dots span:nth-child(2) { background: #febc2e; }
+.preview-dots span:nth-child(3) { background: #28c840; }
+.preview-url {
+  flex: 1;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  color: var(--text-3);
+  text-align: center;
+  background: rgba(0,0,0,0.04);
+  border-radius: 6px;
+  padding: 4px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.preview-open {
+  font-size: 12px;
+  font-weight: 600;
+  color: #7c22e8;
+  flex-shrink: 0;
+  transition: opacity .2s;
+}
+.preview-open:hover { opacity: 0.7; }
+.proj-preview-body {
+  position: relative;
+  height: 520px;
+  background: #fafafa;
+  overflow: hidden;
+}
+#projIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  opacity: 0;
+  transition: opacity .4s;
+}
+.proj-preview-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--bg);
+  text-align: center;
+}
+.pf-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(600px circle at 50% 40%, rgba(168,85,247,0.12), transparent 60%);
+  pointer-events: none;
+}
+.pf-icon {
+  font-size: 40px;
+  opacity: 0.25;
+}
+.pf-domain {
+  font-family: 'Geist Mono', monospace;
+  font-size: 22px;
+  font-weight: 600;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pf-msg {
+  font-size: 14px;
+  color: rgba(15,15,17,0.45);
+}
+.pf-btn {
+  margin-top: 8px;
+}
+
+/* ============ SECTION SUBHEAD ============ */
+.proj-sec-head {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.proj-sec-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  background: var(--card);
+  border: 1px solid var(--border-mid);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
 /* next project link */
 .next-card {
   background: var(--card);
@@ -1128,7 +1287,7 @@ footer {
   <nav class="nav">
     <a href="index.html" class="nav-logo">
       <span class="live-dot"></span>
-      <img src="data:image/png;base64,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" alt="G2G" />
+      <img src="logo.png" alt="G2G" />
     </a>
     <div class="nav-links">
       <a href="index.html#services">Xizmatlar</a>
@@ -1148,7 +1307,7 @@ footer {
       <span>Barcha loyihalar</span>
     </a>
 
-    <div class="proj-meta-row">
+    <div class="proj-meta-row proj-pills">
       <span class="pill">EduTech</span>
       <span class="pill">2024</span>
       <span class="pill live">Live</span>
@@ -1163,14 +1322,29 @@ footer {
       <a href="#" class="btn btn-grad">Saytga o'tish <span>↗</span></a>
       <a href="#" class="btn btn-ghost">Case study (PDF)</a>
     </div>
+
+    <div class="proj-features" id="projFeatures">
+      <!-- populated by JS -->
+    </div>
   </section>
 
-  <!-- HERO IMAGE PLACEHOLDER -->
-  <div class="media-slot media-hero">
-    <div class="media-icon">⊞</div>
-    <div class="media-label">Asosiy rasm</div>
-    <div class="media-title">Loyihaning bosh ko'rinishi</div>
-    <div class="media-hint">Bu yerga loyihaning eng yorqin screenshot'ini joylashtiring (16:9, 1920×1080+)</div>
+  <!-- HERO PREVIEW -->
+  <div class="proj-preview-wrap" id="projPreview">
+    <div class="proj-preview-bar">
+      <div class="preview-dots"><span></span><span></span><span></span></div>
+      <div class="preview-url" id="previewUrl">yhq26.uz</div>
+      <a class="preview-open" id="previewOpen" href="#" target="_blank" rel="noopener">↗ Ochish</a>
+    </div>
+    <div class="proj-preview-body">
+      <iframe id="projIframe" src="" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms" scrolling="no" title="Loyiha ko'rinishi"></iframe>
+      <div class="proj-preview-fallback" id="previewFallback">
+        <div class="pf-glow"></div>
+        <div class="pf-icon">⊞</div>
+        <div class="pf-domain" id="pfDomain">yhq26.uz</div>
+        <div class="pf-msg">Live saytni ko'rish uchun</div>
+        <a class="btn btn-grad pf-btn" id="pfBtn" href="#" target="_blank" rel="noopener">Saytga o'tish ↗</a>
+      </div>
+    </div>
   </div>
 
   <!-- BODY -->
@@ -1206,73 +1380,35 @@ footer {
     </div>
   </section>
 
-  <!-- 2x gallery -->
-  <div class="gallery-2">
-    <div class="media-slot">
-      <div class="media-icon">⊞</div>
-      <div class="media-label">Rasm 01</div>
-      <div class="media-title">Asosiy oqim</div>
-      <div class="media-hint">Foydalanuvchi safari</div>
-    </div>
-    <div class="media-slot">
-      <div class="media-icon">⊞</div>
-      <div class="media-label">Rasm 02</div>
-      <div class="media-title">Qo'shimcha funksiya</div>
-      <div class="media-hint">Dashboard / admin panel</div>
-    </div>
-  </div>
 
-  <!-- 3x mobile -->
-  <div class="gallery-3">
-    <div class="media-slot">
-      <div class="media-icon">⊞</div>
-      <div class="media-label">Mobil 01</div>
-      <div class="media-hint">9:16 mockup</div>
-    </div>
-    <div class="media-slot">
-      <div class="media-icon">⊞</div>
-      <div class="media-label">Mobil 02</div>
-      <div class="media-hint">9:16 mockup</div>
-    </div>
-    <div class="media-slot">
-      <div class="media-icon">⊞</div>
-      <div class="media-label">Mobil 03</div>
-      <div class="media-hint">9:16 mockup</div>
-    </div>
-  </div>
 
-  <!-- Results cards -->
-  <div class="results-grid">
+  <!-- Results section -->
+  <div class="proj-sec-head" data-reveal>
+    <span class="proj-sec-label">Natijalar</span>
+  </div>
+  <div class="results-grid" id="resultsGrid" data-reveal>
     <div class="result-card">
-      <div class="result-num">+218%</div>
-      <div class="result-label">Konversiya</div>
-      <div class="result-desc">Eski sayt bilan solishtirganda</div>
+      <div class="result-num" id="r0num">—</div>
+      <div class="result-label" id="r0lbl">—</div>
+      <div class="result-desc" id="r0desc">—</div>
     </div>
     <div class="result-card">
-      <div class="result-num">12K+</div>
-      <div class="result-label">Foydalanuvchi</div>
-      <div class="result-desc">Birinchi 3 oyda</div>
+      <div class="result-num" id="r1num">—</div>
+      <div class="result-label" id="r1lbl">—</div>
+      <div class="result-desc" id="r1desc">—</div>
     </div>
     <div class="result-card">
-      <div class="result-num">98</div>
-      <div class="result-label">Lighthouse skori</div>
-      <div class="result-desc">Performance · A11y · SEO</div>
+      <div class="result-num" id="r2num">—</div>
+      <div class="result-label" id="r2lbl">—</div>
+      <div class="result-desc" id="r2desc">—</div>
     </div>
-  </div>
-
-  <!-- Final image -->
-  <div class="media-slot media-hero">
-    <div class="media-icon">⊞</div>
-    <div class="media-label">Yakuniy rasm</div>
-    <div class="media-title">To'liq ko'rinish</div>
-    <div class="media-hint">16:9 — yakuniy screenshot</div>
   </div>
 
   <!-- Next project -->
-  <a href="project.html" class="next-card">
+  <a href="#" class="next-card" id="nextCard">
     <div>
       <div class="next-tag">Keyingi loyiha</div>
-      <h3>Menu24.uz <span class="grad" style="background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;">→</span></h3>
+      <h3 id="nextName">—<span class="grad" style="background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;"> →</span></h3>
     </div>
     <span class="arrow-circle">↗</span>
   </a>
@@ -1319,6 +1455,249 @@ footer {
 </footer>
 
 <script>
+// ── Project data ──
+const PROJECTS = {
+  yhq26: {
+    name: 'YHQ26',
+    tagline: 'Yo'l harakati qoidalari elektron ta'lim platformasi — interaktiv testlar, video darslar va sertifikat.',
+    tags: ['EduTech', '2024', 'Web'],
+    domain: 'yhq26.uz',
+    client: 'YHQ26 jamoasi',
+    industry: 'Ta'lim · Transport',
+    year: '2024',
+    duration: '4 oy',
+    team: '1 dizayner · 2 dasturchi',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind'],
+    problem: 'Yo'l harakati qoidalarini o'rganish uchun qulay, zamonaviy platforma yo'q edi. Abituriyentlar eskirgan materiallar va offline testlar bilan mashg'ul bo'lardi.',
+    approach: 'Foydalanuvchi tadqiqoti orqali asosiy og'riq nuqtalari aniqlandi. Interaktiv test tizimi, video darslar va progress tracking — barchasi bitta platformada.',
+    result: 'Yo'l harakati qoidalarini o'rganish endi qulay, tez va samarali. Platforma bir necha mingta abituriyentga yordam berdi.',
+    features: ['Interaktiv testlar', 'Video darslar', 'Sertifikat tizimi', 'Progress tracking', 'Mobil moslashgan'],
+    results: [
+      { num: '10K+', label: 'Foydalanuvchi', desc: 'Birinchi 3 oyda' },
+      { num: '+40%', label: 'O'tish darajasi', desc: 'Testdan o'tish ko'rsatkichi' },
+      { num: '4.9★', label: 'Foydalanuvchi bahosi', desc: 'O'rtacha reyting' }
+    ],
+    nextProject: 'menu24',
+    nextName: 'Menu24.uz'
+  },
+  menu24: {
+    name: 'Menu24',
+    tagline: 'Restoran va kafelar uchun raqamli QR-menyu tizimi — real vaqtda yangilanadigan, 3 tilda.',
+    tags: ['F&B SaaS', '2024', 'Web · Mobile'],
+    domain: 'menu24.uz',
+    client: 'Menu24',
+    industry: 'F&B · SaaS',
+    year: '2024',
+    duration: '3 oy',
+    team: '1 dizayner · 2 dasturchi',
+    tech: ['React', 'Node.js', 'MongoDB', 'QR API'],
+    problem: 'Restoranlar menyuni yangilash uchun yangi bosma materiallar chop ettirar edi — qimmat va sekin. QR-menyu yechimlari esa murakkab va qimmat edi.',
+    approach: 'Oddiy admin panel — telefonda ham ishlaydi. Real vaqtda narx va mahsulot yangilash. Ko'p tilli qo'llab-quvvatlash.',
+    result: 'Restoranlar vaqt va pul tejadi. Mehmonlar qulay raqamli menyudan foydalanadi.',
+    features: ['QR-menyu', 'Real vaqt yangilash', '3 tilda', 'Admin panel', 'Tahlil va statistika'],
+    results: [
+      { num: '200+', label: 'Restoran', desc: 'Birinchi yilda' },
+      { num: '5 daq', label: 'Yangilash vaqti', desc: 'O'rtacha menyu yangilash' },
+      { num: '3×', label: 'Tezlik', desc: 'Eski usuldan tezroq' }
+    ],
+    nextProject: 'salesagent',
+    nextName: 'SalesAgent'
+  },
+  salesagent: {
+    name: 'SalesAgent',
+    tagline: 'Sun'iy intellekt asosidagi avtomatlashtirilgan savdo agenti — CRM integratsiyasi bilan.',
+    tags: ['AI', 'CRM', '2025', 'SaaS'],
+    domain: 'salesagent.uz',
+    client: 'SalesAgent',
+    industry: 'AI · Sales · SaaS',
+    year: '2025',
+    duration: '6 oy',
+    team: '2 dizayner · 4 dasturchi',
+    tech: ['Python', 'OpenAI API', 'React', 'PostgreSQL'],
+    problem: 'Savdo jamoalari potentsial mijozlarni kuzatishga juda ko'p vaqt sarflar edi. Lead'larning 60% e'tiborsiz qolar edi.',
+    approach: 'AI agent avtomatik ravishda lead'larni segmentatsiya qiladi, xabar yozadi va CRM'ga kiritadi. Inson faqat qaror qabul qiladi.',
+    result: 'Savdo jarayoni avtomatlashdi. Jamoa vaqtini tejab, muhim ishlarga e'tibor qarata boshladi.',
+    features: ['AI lead scoring', 'Avtomatik xabarlar', 'CRM integratsiya', 'Real-time tahlil', 'Ko'p kanal'],
+    results: [
+      { num: '+35%', label: 'Konversiya', desc: 'Savdo ko'rsatkichi oshishi' },
+      { num: '60%', label: 'Vaqt tejaldi', desc: 'Jamoaning ish vaqti' },
+      { num: '∞', label: 'Scalable', desc: 'Cheksiz o'sish imkoniyati' }
+    ],
+    nextProject: 'azam',
+    nextName: 'Azam.to'
+  },
+  azam: {
+    name: 'Azam.to',
+    tagline: 'Korxonalar uchun integrallashgan biznes infratuzilmasi — hisob-kitob, HR va logistika.',
+    tags: ['B2B', '2025', 'Enterprise'],
+    domain: 'azam.to',
+    client: 'Azam Group',
+    industry: 'Enterprise · B2B',
+    year: '2025',
+    duration: '8 oy',
+    team: '3 dizayner · 5 dasturchi',
+    tech: ['Next.js', 'Go', 'PostgreSQL', 'Docker'],
+    problem: 'Katta korxonalar uchun alohida-alohida tizimlar (1C, Excel, Google Sheets) murakkab va xatoga moyil edi.',
+    approach: 'Yagona platforma: moliya, HR, logistika va hisobot. API orqali mavjud tizimlar bilan integratsiya.',
+    result: 'Barcha biznes jarayonlar bitta tizimga birlashtirildi. Xatoliklar kamaydi, samaradorlik oshdi.',
+    features: ['Moliya boshqaruvi', 'HR tizimi', 'Logistika', 'Hisobotlar', 'API integratsiya'],
+    results: [
+      { num: '-80%', label: 'Hisobot vaqti', desc: 'Tayyorlash vaqti qisqardi' },
+      { num: '3', label: 'Yirik korxona', desc: 'Birinchi klientlar' },
+      { num: '1', label: 'Yagona tizim', desc: 'Barcha jarayonlar uchun' }
+    ],
+    nextProject: 'noorquran',
+    nextName: 'NoorQuran'
+  },
+  noorquran: {
+    name: 'NoorQuran',
+    tagline: 'Tarjima, audio o'qish va kundalik amallar bilan Qur'on ilovasi — iOS va Android.',
+    tags: ['Mobile', '2024', 'iOS · Android'],
+    domain: 'noorquran.app',
+    client: 'NoorQuran jamoasi',
+    industry: 'Religious Tech · Mobile',
+    year: '2024',
+    duration: '5 oy',
+    team: '2 dizayner · 3 dasturchi',
+    tech: ['React Native', 'TypeScript', 'SQLite', 'Audio API'],
+    problem: 'Mavjud Qur'on ilovalari qulay emas yoki reklamaga to'la edi. O'zbek tilidagi sifatli tarjima yo'q edi.',
+    approach: 'Minimal va toza dizayn. O'zbek, rus va ingliz tillarida tarjima. Oflayn rejim. Kundalik o'qish maqsadlari.',
+    result: 'O'zbek foydalanuvchilari uchun eng qulay Qur'on ilovasi. Reklama yo'q, faqat mazmun.',
+    features: ['Audio o'qish', 'O'zbek tarjima', 'Oflayn rejim', 'Kundalik maqsad', 'Bookmark'],
+    results: [
+      { num: '50K+', label: 'Yuklab olish', desc: 'Birinchi 6 oyda' },
+      { num: '4.8★', label: 'App Store', desc: 'Foydalanuvchi reytingi' },
+      { num: '3 til', label: 'Tillar', desc: 'O'zbek, Rus, Ingliz' }
+    ],
+    nextProject: 'yhq26',
+    nextName: 'YHQ26'
+  }
+};
+
+// ── Populate page from URL param ──
+(function() {
+  const id = new URLSearchParams(window.location.search).get('p');
+  const p = PROJECTS[id];
+  if (!p) return;
+
+  // Title
+  const h1 = document.querySelector('.proj-h1');
+  if (h1) h1.innerHTML = '<span class="grad">' + p.name + '</span>';
+
+  // Tagline
+  const tl = document.querySelector('.proj-tagline');
+  if (tl) tl.textContent = p.tagline;
+
+  // Tags/pills
+  const pillRow = document.querySelector('.proj-pills');
+  if (pillRow) {
+    pillRow.innerHTML = p.tags.map(t => '<span class="pill">' + t + '</span>').join('');
+  }
+
+  // Domain link
+  const link = document.querySelector('.btn-grad');
+  if (link && p.domain) link.href = 'https://' + p.domain;
+
+  // Sidebar
+  const rows = document.querySelectorAll('.proj-side .row .v');
+  const vals = [p.client, p.industry, p.year, p.duration, p.team];
+  rows.forEach(function(r, i) { if (vals[i]) r.textContent = vals[i]; });
+
+  // Tech pills
+  const techList = document.querySelector('.tech-list');
+  if (techList && p.tech) {
+    techList.innerHTML = p.tech.map(t => '<span class="pill">' + t + '</span>').join('');
+  }
+
+  // Live link
+  const liveLink = document.querySelector('.proj-side .row a');
+  if (liveLink && p.domain) {
+    liveLink.href = 'https://' + p.domain;
+    liveLink.textContent = p.domain + ' ↗';
+  }
+
+  // Content
+  const paras = document.querySelectorAll('.proj-content p');
+  if (paras[0]) paras[0].textContent = p.problem;
+  if (paras[1]) paras[1].textContent = p.approach;
+  if (paras[2]) paras[2].textContent = '';
+  if (paras[3]) paras[3].textContent = p.result;
+
+  // Features row
+  const feat = document.getElementById('projFeatures');
+  if (feat && p.features) {
+    feat.innerHTML = p.features.map(f =>
+      '<span class="proj-feat-chip">' + f + '</span>'
+    ).join('');
+  }
+
+  // Results cards
+  if (p.results) {
+    p.results.forEach(function(r, i) {
+      var n = document.getElementById('r' + i + 'num');
+      var l = document.getElementById('r' + i + 'lbl');
+      var d = document.getElementById('r' + i + 'desc');
+      if (n) n.textContent = r.num;
+      if (l) l.textContent = r.label;
+      if (d) d.textContent = r.desc;
+    });
+  }
+
+  // Next project
+  if (p.nextProject) {
+    var nc = document.getElementById('nextCard');
+    var nn = document.getElementById('nextName');
+    if (nc) nc.href = 'project.html?p=' + p.nextProject;
+    if (nn) nn.innerHTML = p.nextName + '<span class="grad" style="background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;"> →</span>';
+  }
+
+  // Iframe preview
+  var iframe = document.getElementById('projIframe');
+  var previewUrl = document.getElementById('previewUrl');
+  var previewOpen = document.getElementById('previewOpen');
+  var pfDomain = document.getElementById('pfDomain');
+  var pfBtn = document.getElementById('pfBtn');
+  if (p.domain) {
+    var url = 'https://' + p.domain;
+    if (previewUrl) previewUrl.textContent = p.domain;
+    if (previewOpen) previewOpen.href = url;
+    if (pfDomain) pfDomain.textContent = p.domain;
+    if (pfBtn) pfBtn.href = url;
+    if (iframe) {
+      iframe.src = url;
+      iframe.onload = function() {
+        try {
+          // If iframe loaded fine, hide fallback
+          var fb = document.getElementById('previewFallback');
+          if (fb) fb.style.display = 'none';
+          iframe.style.opacity = '1';
+        } catch(e) {}
+      };
+      iframe.onerror = function() {
+        var fb = document.getElementById('previewFallback');
+        if (fb) fb.style.display = 'flex';
+        iframe.style.display = 'none';
+      };
+      // Show fallback after 4s if iframe hasn't loaded (CORS / X-Frame-Options)
+      setTimeout(function() {
+        try {
+          var doc = iframe.contentDocument || iframe.contentWindow.document;
+          if (!doc || doc.readyState === 'loading' || !doc.body || doc.body.innerHTML === '') {
+            throw new Error('blocked');
+          }
+        } catch(e) {
+          var fb = document.getElementById('previewFallback');
+          if (fb) { fb.style.display = 'flex'; }
+          if (iframe) { iframe.style.display = 'none'; }
+        }
+      }, 4000);
+    }
+  }
+
+  // Page title
+  document.title = p.name + ' — G2G';
+})();
+
 document.body.classList.remove('no-js');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
